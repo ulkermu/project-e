@@ -32,5 +32,5 @@ export const modelState = atom({
 
 export const basketState = atom({
   key: "basket",
-  default: [],
+  default: JSON.parse(localStorage.getItem("basket")),
 });

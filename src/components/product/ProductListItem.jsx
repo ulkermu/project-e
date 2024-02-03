@@ -11,7 +11,7 @@ const ProductListItem = ({ item }) => {
   const [basket, setBasket] = useRecoilState(basketState);
   const setCard = useSetRecoilState(cardState);
 
-  const isExist = basket.find((e) => e.id === item.id);
+  const isExist = basket.find((e) => e.id === item.id) ? true : false;
 
   const handleNavigateToDetail = () => {
     setCard(item);
@@ -20,18 +20,24 @@ const ProductListItem = ({ item }) => {
 
   const handleAddCard = () => {
     setBasket((prevBasket) => {
-      // Ürünün basket içinde olup olmadığını kontrol et
-      const existingItemIndex = prevBasket.findIndex((basketItem) => basketItem.id === item.id);
+      // Sepetteki ürünü bul
+      const existingProduct = prevBasket.find((prev) => prev.id === item.id);
 
-      if (existingItemIndex > -1) {
-        // Ürün zaten varsa, miktarını 1 artır
-        const newBasket = [...prevBasket];
-        newBasket[existingItemIndex].quantity = (newBasket[existingItemIndex].quantity || 0) + 1;
-        return newBasket;
+      let newBasket;
+      if (existingProduct) {
+        // Ürün zaten sepette varsa, miktarını artır
+        newBasket = prevBasket.map((prev) =>
+          prev.id === item.id ? { ...prev, quantity: prev.quantity + 1 } : prev
+        );
       } else {
-        // Ürün yoksa, yeni bir nesne olarak ekle
-        return [...prevBasket, { ...item, quantity: 1 }];
+        // Ürün sepette yoksa, yeni ürünü ekleyerek miktarını 1 yap
+        newBasket = [...prevBasket, { ...item, quantity: 1 }];
       }
+
+      // localStorage'a yeni sepeti kaydet
+      localStorage.setItem("basket", JSON.stringify(newBasket));
+
+      return newBasket;
     });
   };
 

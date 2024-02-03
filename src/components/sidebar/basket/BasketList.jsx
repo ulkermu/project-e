@@ -10,18 +10,25 @@ const BasketList = () => {
 
   const handleAddToBasket = (product) => {
     setBasket((prevBasket) => {
+      let newBasket;
+
       // Sepetteki ürünü bul
       const existingProduct = prevBasket.find((item) => item.id === product.id);
 
       if (existingProduct) {
         // Ürün zaten sepette varsa, miktarını artır
-        return prevBasket.map((item) =>
+        newBasket = prevBasket.map((item) =>
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       } else {
         // Ürün sepette yoksa, yeni ürünü ekleyerek miktarını 1 yap
-        return [...prevBasket, { ...product, quantity: 1 }];
+        newBasket = [...prevBasket, { ...product, quantity: 1 }];
       }
+
+      // Yeni sepeti localStorage'a kaydet
+      localStorage.setItem("basket", JSON.stringify(newBasket));
+
+      return newBasket;
     });
   };
 
@@ -31,16 +38,20 @@ const BasketList = () => {
 
       if (existingProductIndex !== -1) {
         // Sepetteki ürünün kopyasını oluşturun
-        const newBasket = prevBasket.map((basketItem, index) => {
-          if (index === existingProductIndex) {
-            // Miktarı azaltın
-            return { ...basketItem, quantity: basketItem.quantity - 1 };
-          }
-          return basketItem;
-        });
+        const newBasket = prevBasket
+          .map((basketItem, index) => {
+            if (index === existingProductIndex) {
+              // Miktarı azaltın
+              return { ...basketItem, quantity: basketItem.quantity - 1 };
+            }
+            return basketItem;
+          })
+          .filter((basketItem) => basketItem.quantity > 0); // Miktarı 0 veya daha az olan ürünleri filtreleyin
 
-        // Miktarı 0 veya daha az olan ürünleri filtreleyin
-        return newBasket.filter((basketItem) => basketItem.quantity > 0);
+        // localStorage'a yeni sepeti kaydet
+        localStorage.setItem("basket", JSON.stringify(newBasket));
+
+        return newBasket;
       }
 
       return prevBasket;

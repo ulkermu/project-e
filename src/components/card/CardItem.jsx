@@ -16,18 +16,25 @@ const CardItem = () => {
 
   const handleAddCard = () => {
     setBasket((prevBasket) => {
-      // Ürünün basket içinde olup olmadığını kontrol et
-      const existingItemIndex = prevBasket.findIndex((basketItem) => basketItem.id === card.id);
+      let newBasket;
 
-      if (existingItemIndex > -1) {
-        // Ürün zaten varsa, miktarını 1 artır
-        const newBasket = [...prevBasket];
-        newBasket[existingItemIndex].quantity = (newBasket[existingItemIndex].quantity || 0) + 1;
-        return newBasket;
+      // Sepetteki ürünü bul
+      const existingProduct = prevBasket.find((item) => item.id === card.id);
+
+      if (existingProduct) {
+        // Ürün zaten sepette varsa, miktarını artır
+        newBasket = prevBasket.map((item) =>
+          item.id === card.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
       } else {
-        // Ürün yoksa, yeni bir nesne olarak ekle
-        return [...prevBasket, { ...card, quantity: 1 }];
+        // Ürün sepette yoksa, yeni ürünü ekleyerek miktarını 1 yap
+        newBasket = [...prevBasket, { ...card, quantity: 1 }];
       }
+
+      // Yeni sepeti localStorage'a kaydet
+      localStorage.setItem("basket", JSON.stringify(newBasket));
+
+      return newBasket;
     });
   };
 
