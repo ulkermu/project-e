@@ -11,7 +11,7 @@ const ProductListItem = ({ item }) => {
   const [basket, setBasket] = useRecoilState(basketState);
   const setCard = useSetRecoilState(cardState);
 
-  const isExist = basket.find((e) => e.id === item.id) ? true : false;
+  const isExist = basket?.find((e) => e.id === item.id) ? true : false;
 
   const handleNavigateToDetail = () => {
     setCard(item);

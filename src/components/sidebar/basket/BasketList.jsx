@@ -61,7 +61,7 @@ const BasketList = () => {
   return (
     <div className="basket-item">
       <div className="basket-item-list">
-        {basket.map((item) => (
+        {basket?.map((item) => (
           <div key={item.id} className="basket-item-list-item">
             <div className="item-detail">
               <div className="item-detail-name">{item.name}</div>
@@ -78,7 +78,7 @@ const BasketList = () => {
             </div>
           </div>
         ))}
-        {basket.length === 0 && (
+        {basket?.length === 0 && (
           <div className="empty">
             <ShoppingCartOutlinedIcon />
             <p>Your basket is currently empty.</p>

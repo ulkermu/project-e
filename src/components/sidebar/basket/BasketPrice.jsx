@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 const BasketPrice = () => {
   const basket = useRecoilValue(basketState);
 
-  const totalPrice = basket.reduce((total, item) => {
+  const totalPrice = basket?.reduce((total, item) => {
     return total + parseFloat(item.price) * parseInt(item.quantity, 10);
   }, 0);
 

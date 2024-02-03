@@ -16,7 +16,7 @@ const Header = ({ setFilteredProductData }) => {
 
   const [search, setSearch] = useState("");
 
-  const totalPrice = basket.reduce((total, item) => {
+  const totalPrice = basket?.reduce((total, item) => {
     return total + parseFloat(item.price) * parseInt(item.quantity, 10);
   }, 0);
 
