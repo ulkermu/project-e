@@ -1,0 +1,31 @@
+.button {
+  width: 100% !important;
+  height: 30px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px;
+  outline: none !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  text-transform: none !important;
+
+  background-color: var(--ocean) !important;
+  border: 1px solid var(--ocean) !important;
+  color: var(--light) !important;
+
+  transition: all 150ms linear !important;
+
+  &:hover {
+    background-color: var(--light) !important;
+    color: var(--ocean) !important;
+
+    transition: all 150ms linear !important;
+  }
+
+  &:disabled {
+    background-color: var(--grass) !important;
+    border: var(--grass) !important;
+    color: var(--text) !important;
+  }
+}

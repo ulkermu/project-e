@@ -1,0 +1,60 @@
+header {
+  width: 100%;
+  height: 70px;
+  background-color: var(--ocean);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .nav-wrapper {
+  max-width: 1400px;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .nav-wrapper .nav-container {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  width: 100%;
+}
+header .nav-wrapper .nav-container nav a {
+  font-size: 20px;
+  letter-spacing: 5px;
+  color: var(--light);
+  text-decoration: none;
+}
+header .nav-wrapper .nav-container .search-wrapper {
+  position: relative;
+  width: 100%;
+}
+header .nav-wrapper .nav-container .search-wrapper .search {
+  background-color: var(--light);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px 10px 30px;
+  outline: none;
+  max-width: 400px;
+  width: 100%;
+}
+header .nav-wrapper .nav-container .search-wrapper .search-icon {
+  position: absolute;
+  left: 5px;
+  top: 6px;
+}
+header .profile {
+  display: flex;
+  gap: var(--gap2x);
+}
+header .profile .profile-name {
+  display: flex;
+  align-items: center;
+  color: var(--light);
+  gap: 3px;
+  text-transform: none;
+}
+header .profile .profile-name svg {
+  color: var(--light);
+}/*# sourceMappingURL=Header.css.map */

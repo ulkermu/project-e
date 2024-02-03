@@ -1,0 +1,28 @@
+.filter-wrapper {
+  min-width: 200px;
+  transition: all 150ms linear;
+
+  .filter {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap2x);
+
+    .filter-item {
+      background-color: var(--light);
+      min-height: 100px;
+      width: 100%;
+      border-radius: 7px;
+      padding: 10px;
+      box-shadow: var(--shadow);
+      font-size: 14px;
+
+      .filter-item-group {
+        display: flex;
+        flex-direction: column;
+        max-height: 200px;
+        overflow-y: auto;
+        flex-wrap: nowrap;
+      }
+    }
+  }
+}
