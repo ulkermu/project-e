@@ -21,12 +21,12 @@ const ProductListItem = ({ item }) => {
   const handleAddCard = () => {
     setBasket((prevBasket) => {
       // Sepetteki ürünü bul
-      const existingProduct = prevBasket.find((prev) => prev.id === item.id);
+      const existingProduct = prevBasket?.find((prev) => prev.id === item.id);
 
       let newBasket;
       if (existingProduct) {
         // Ürün zaten sepette varsa, miktarını artır
-        newBasket = prevBasket.map((prev) =>
+        newBasket = prevBasket?.map((prev) =>
           prev.id === item.id ? { ...prev, quantity: prev.quantity + 1 } : prev
         );
       } else {

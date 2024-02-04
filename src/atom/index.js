@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+const isStoraged = JSON.parse(localStorage.getItem("basket")) !== null;
 
 export const productDataState = atom({
   key: "productData",
@@ -32,5 +33,5 @@ export const modelState = atom({
 
 export const basketState = atom({
   key: "basket",
-  default: JSON.parse(localStorage.getItem("basket")),
+  default: isStoraged ? JSON.parse(localStorage.getItem("basket")) : [],
 });
