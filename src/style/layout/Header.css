@@ -5,6 +5,39 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+header .mobil-search-wrapper {
+  position: absolute;
+  width: 100%;
+  padding: 0 20px 0 140px;
+  top: 20px;
+  z-index: 2;
+  display: none;
+}
+header .mobil-search-wrapper .mobil-search {
+  position: relative;
+  width: 100%;
+}
+header .mobil-search-wrapper .mobil-search .search {
+  background-color: var(--light);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px 10px 30px;
+  outline: none;
+  max-width: 400px;
+  width: 100%;
+}
+header .mobil-search-wrapper .mobil-search .search-icon {
+  position: absolute;
+  left: 5px;
+  top: 6px;
+}
+header .mobil-search-wrapper .mobil-search .close-icon {
+  position: absolute;
+  top: 6px;
+  right: 5px;
+  cursor: pointer;
 }
 header .nav-wrapper {
   max-width: 1400px;
@@ -13,16 +46,18 @@ header .nav-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--gap2x);
 }
 header .nav-wrapper .nav-container {
   display: flex;
   align-items: center;
   gap: 100px;
   width: 100%;
+  transition: all 150ms linear;
 }
 header .nav-wrapper .nav-container nav a {
   font-size: 20px;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   color: var(--light);
   text-decoration: none;
 }
@@ -44,6 +79,9 @@ header .nav-wrapper .nav-container .search-wrapper .search-icon {
   left: 5px;
   top: 6px;
 }
+header .nav-wrapper .nav-container .search-wrapper-mobil {
+  display: none;
+}
 header .profile {
   display: flex;
   gap: var(--gap2x);
@@ -57,4 +95,63 @@ header .profile .profile-name {
 }
 header .profile .profile-name svg {
   color: var(--light);
+}
+
+@media (max-width: 835px) {
+  header .nav-wrapper .nav-container {
+    gap: var(--gap2x);
+  }
+}
+@media (max-width: 500px) {
+  header .mobil-search-wrapper {
+    display: block;
+  }
+  header .nav-wrapper .nav-container {
+    gap: var(--gap);
+  }
+  header .nav-wrapper .nav-container .search-wrapper {
+    display: none;
+  }
+  header .nav-wrapper .nav-container .search-wrapper-mobil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  header .nav-wrapper .nav-container .search-wrapper-mobil .icon-button {
+    background-color: var(--light);
+    text-transform: none;
+    padding-right: 15px;
+  }
+  header .nav-wrapper .nav-container .search-wrapper-mobil .icon-button:hover {
+    opacity: 0.9;
+    transition: all 150ms linear;
+  }
+  header .nav-wrapper .profile {
+    gap: var(--gap);
+  }
+  header .nav-wrapper .profile .settings {
+    min-width: 36px;
+    width: 36px;
+    border-radius: 50%;
+    background-color: var(--light100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  header .nav-wrapper .profile .settings .profile-text {
+    display: none;
+  }
+}
+@media (max-width: 400px) {
+  header .nav-wrapper .nav-container .search-wrapper-mobil .icon-button {
+    min-width: 36px;
+    width: 36px;
+    border-radius: 50%;
+  }
+  header .nav-wrapper .nav-container .search-wrapper-mobil .icon-button .search-icon {
+    margin-left: 7px;
+  }
+  header .nav-wrapper .nav-container .search-wrapper-mobil .icon-button .search-text {
+    display: none;
+  }
 }/*# sourceMappingURL=Header.css.map */

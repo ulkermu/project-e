@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Button } from "@mui/material";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { basketState, filteredProductDataState, productDataState } from "../../atom";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import { Button } from "@mui/material";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
 const Header = () => {
   const setFilteredProductData = useSetRecoilState(filteredProductDataState);
@@ -14,6 +15,7 @@ const Header = () => {
   const basket = useRecoilValue(basketState);
 
   const [search, setSearch] = useState("");
+  const [searchAppear, setSearchAppear] = useState(false);
 
   const totalPrice = basket?.reduce((total, item) => {
     return total + parseFloat(item.price) * parseInt(item.quantity, 10);
@@ -37,8 +39,32 @@ const Header = () => {
     }
   };
 
+  const handleSearchAppear = () => {
+    setSearchAppear(true);
+  };
+
+  const handleSearchAppearClose = () => {
+    setSearchAppear(false);
+  };
+
   return (
     <header>
+      {searchAppear && (
+        <div className="mobil-search-wrapper">
+          <div className="mobil-search">
+            <input
+              className="search"
+              type="text"
+              value={search}
+              onChange={handleSearchChange}
+              placeholder="Search"
+              autoComplete="off"
+            />
+            <SearchIcon className="search-icon" />
+            <CancelOutlinedIcon onClick={handleSearchAppearClose} className="close-icon" />
+          </div>
+        </div>
+      )}
       <div className="nav-wrapper">
         <div className="nav-container">
           <nav>
@@ -55,13 +81,21 @@ const Header = () => {
             />
             <SearchIcon className="search-icon" />
           </div>
+          {!searchAppear && (
+            <div className="search-wrapper-mobil">
+              <Button onClick={handleSearchAppear} className="icon-button">
+                <SearchIcon className="search-icon" />
+                <span className="search-text">Search</span>
+              </Button>
+            </div>
+          )}
         </div>
         <div className="profile">
           <div className="profile-name">
             <ShoppingCartOutlinedIcon /> ${totalPrice}
           </div>
-          <Button className="profile-name">
-            <PersonOutlineOutlinedIcon /> Murat
+          <Button className="profile-name settings">
+            <PersonOutlineOutlinedIcon /> <span className="profile-text">Murat</span>
           </Button>
         </div>
       </div>
