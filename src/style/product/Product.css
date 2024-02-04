@@ -20,8 +20,9 @@
   justify-content: center;
 }
 .product-wrapper .product .product-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--gap2x);
 }
 .product-wrapper .product .product-list .product-list-item {
@@ -33,6 +34,9 @@
   flex-direction: column;
   justify-content: space-between;
   gap: var(--gap2x);
+  flex: 1 1 200px;
+  min-width: 200px;
+  max-width: 320px;
 }
 .product-wrapper .product .product-list .product-list-item figure {
   display: flex;
