@@ -6,6 +6,11 @@ export const productDataState = atom({
   default: [],
 });
 
+export const filteredProductDataState = atom({
+  key: "filteredProductData",
+  default: [],
+});
+
 export const selectedBrandsState = atom({
   key: "selectedBrands",
   default: [],

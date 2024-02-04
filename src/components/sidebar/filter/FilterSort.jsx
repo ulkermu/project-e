@@ -1,8 +1,12 @@
 import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { filteredProductDataState } from "../../../atom";
 
-const FilterSort = ({ filteredProductData, setFilteredProductData }) => {
+const FilterSort = () => {
   const [sortType, setSortType] = useState("otn");
+
+  const [filteredProductData, setFilteredProductData] = useRecoilState(filteredProductDataState);
 
   const handleSortType = (e) => {
     const value = e.target.value;

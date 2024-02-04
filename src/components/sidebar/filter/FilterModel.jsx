@@ -1,5 +1,10 @@
 import { useRecoilState, useRecoilValue } from "recoil";
-import { modelState, productDataState, selectedModelsState } from "../../../atom";
+import {
+  modelState,
+  productDataState,
+  selectedBrandsState,
+  selectedModelsState,
+} from "../../../atom";
 import { useEffect, useState } from "react";
 import {
   Checkbox,
@@ -12,13 +17,15 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
 
-const FilterModel = ({ setFilteredProductData }) => {
+const FilterModel = () => {
   const productData = useRecoilValue(productDataState);
   const model = useRecoilValue(modelState);
+  const selectedBrands = useRecoilValue(selectedBrandsState);
+
   const [selectedModels, setSelectedModels] = useRecoilState(selectedModelsState);
+  const [filteredModels, setFilteredModels] = useState(model);
 
   const [search, setSearch] = useState("");
-  const [filteredModels, setFilteredModels] = useState(model);
 
   const handleSearchChange = (e) => {
     const value = e.target.value.toLowerCase();
@@ -37,26 +44,13 @@ const FilterModel = ({ setFilteredProductData }) => {
     setFilteredModels(model);
   };
 
-  const handleFilterModelChange = (item) => {
-    setSelectedModels((prevSelectedBrands) => {
-      if (prevSelectedBrands?.includes(item)) {
-        return prevSelectedBrands?.filter((brand) => brand !== item);
-      } else {
-        return [...prevSelectedBrands, item];
-      }
-    });
+  const handleModelSelection = (model) => {
+    setSelectedModels((prevSelectedModels) =>
+      prevSelectedModels.includes(model)
+        ? prevSelectedModels.filter((m) => m !== model)
+        : [...prevSelectedModels, model]
+    );
   };
-
-  useEffect(() => {
-    if (selectedModels.length > 0) {
-      const newFilteredData = productData.filter((product) =>
-        selectedModels.includes(product.model)
-      );
-      setFilteredProductData(newFilteredData);
-    } else {
-      setFilteredProductData(productData);
-    }
-  }, [selectedModels, productData, setFilteredProductData]);
 
   useEffect(() => {
     setFilteredModels(model);
@@ -88,19 +82,26 @@ const FilterModel = ({ setFilteredProductData }) => {
         }}
       />
       <FormGroup className="filter-item-group">
-        {filteredModels?.map((item, key) => (
-          <FormControlLabel
-            key={key}
-            control={
-              <Checkbox
-                sx={{ color: "var(--ocean)" }}
-                onChange={() => handleFilterModelChange(item)}
-                checked={selectedModels.includes(item)}
-              />
-            }
-            label={item}
-          />
-        ))}
+        {filteredModels
+          .filter(
+            (model) =>
+              selectedBrands.length === 0 ||
+              productData.some(
+                (product) => product.model === model && selectedBrands.includes(product.brand)
+              )
+          )
+          .map((model, index) => (
+            <FormControlLabel
+              key={index}
+              control={
+                <Checkbox
+                  checked={selectedModels.includes(model)}
+                  onChange={() => handleModelSelection(model)}
+                />
+              }
+              label={model}
+            />
+          ))}
       </FormGroup>
     </div>
   );

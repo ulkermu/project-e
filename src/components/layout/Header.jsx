@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import { basketState, productDataState } from "../../atom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { basketState, filteredProductDataState, productDataState } from "../../atom";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Button } from "@mui/material";
 
-const Header = ({ setFilteredProductData }) => {
-  // setFilteredProductData fonksiyonunun tanımlı olup olmadığını kontrol et
-  const isSetFilteredProductDataDefined = typeof setFilteredProductData === "function";
+const Header = () => {
+  const setFilteredProductData = useSetRecoilState(filteredProductDataState);
 
   const productData = useRecoilValue(productDataState);
   const basket = useRecoilValue(basketState);
@@ -25,9 +24,7 @@ const Header = ({ setFilteredProductData }) => {
     setSearch(value);
 
     if (value === "") {
-      if (isSetFilteredProductDataDefined) {
-        setFilteredProductData(productData);
-      }
+      setFilteredProductData(productData);
     } else {
       const newFilteredData = productData.filter(
         (item) =>
@@ -36,9 +33,7 @@ const Header = ({ setFilteredProductData }) => {
           item.model.toLowerCase().includes(value) ||
           item.price.toString().includes(value) // price sayıysa, içermesi için stringe dönüştürülür
       );
-      if (isSetFilteredProductDataDefined) {
-        setFilteredProductData(newFilteredData);
-      }
+      setFilteredProductData(newFilteredData);
     }
   };
 

@@ -7,30 +7,18 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import Basket from "../components/sidebar/basket/Basket";
 import Filter from "../components/sidebar/filter/Filter";
-import { useRecoilValue } from "recoil";
-import { productDataState } from "../atom";
-import { useState } from "react";
 
 const Product = () => {
-  const productData = useRecoilValue(productDataState);
-  const [filteredProductData, setFilteredProductData] = useState(productData);
-
   return (
     <>
-      <Header setFilteredProductData={setFilteredProductData} />
+      <Header />
       <main className="main">
         <div className="product-wrapper">
           <aside className="filter-wrapper">
-            <Filter
-              setFilteredProductData={setFilteredProductData}
-              filteredProductData={filteredProductData}
-            />
+            <Filter />
           </aside>
           <section className="product">
-            <ProductList
-              filteredProductData={filteredProductData}
-              setFilteredProductData={setFilteredProductData}
-            />
+            <ProductList />
           </section>
           <aside className="basket-wrapper">
             <Basket />

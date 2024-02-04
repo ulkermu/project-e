@@ -1,15 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
 import api from "../../api/api";
 import ProductListItem from "./ProductListItem";
-import { useSetRecoilState } from "recoil";
-import { brandState, modelState, productDataState } from "../../atom";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { brandState, filteredProductDataState, modelState, productDataState } from "../../atom";
 import { Pagination } from "@mui/material";
 
-const ProductList = ({ filteredProductData, setFilteredProductData }) => {
+const ProductList = () => {
   const pageLimit = 12;
 
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+
+  const [filteredProductData, setFilteredProductData] = useRecoilState(filteredProductDataState);
 
   const setProductData = useSetRecoilState(productDataState);
   const setBrand = useSetRecoilState(brandState);
@@ -31,8 +33,8 @@ const ProductList = ({ filteredProductData, setFilteredProductData }) => {
         setProductData(jsonData);
         setFilteredProductData(jsonData);
 
-        setBrand(Array.from(new Set(jsonData?.map((item) => item?.brand))));
-        setModel(Array.from(new Set(jsonData?.map((item) => item?.model))));
+        setBrand([...new Set(jsonData?.map((item) => item?.brand))]);
+        setModel([...new Set(jsonData?.map((item) => item?.model))]);
       })
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));

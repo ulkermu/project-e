@@ -8,12 +8,11 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { brandState, productDataState, selectedBrandsState } from "../../../atom";
+import { brandState, selectedBrandsState } from "../../../atom";
 import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
 
-const FilterBrand = ({ setFilteredProductData }) => {
-  const productData = useRecoilValue(productDataState);
+const FilterBrand = () => {
   const brand = useRecoilValue(brandState);
   const [selectedBrands, setSelectedBrands] = useRecoilState(selectedBrandsState);
 
@@ -37,26 +36,13 @@ const FilterBrand = ({ setFilteredProductData }) => {
     setFilteredBrands(brand);
   };
 
-  const handleFilterBrandChange = (item) => {
-    setSelectedBrands((prevSelectedBrands) => {
-      if (prevSelectedBrands.includes(item)) {
-        return prevSelectedBrands.filter((brand) => brand !== item);
-      } else {
-        return [...prevSelectedBrands, item];
-      }
-    });
+  const handleBrandSelection = (brand) => {
+    setSelectedBrands((prevSelectedBrands) =>
+      prevSelectedBrands.includes(brand)
+        ? prevSelectedBrands.filter((b) => b !== brand)
+        : [...prevSelectedBrands, brand]
+    );
   };
-
-  useEffect(() => {
-    if (selectedBrands.length > 0) {
-      const newFilteredData = productData.filter((product) =>
-        selectedBrands.includes(product.brand)
-      );
-      setFilteredProductData(newFilteredData);
-    } else {
-      setFilteredProductData(productData);
-    }
-  }, [selectedBrands, productData, setFilteredProductData, setSelectedBrands]);
 
   useEffect(() => {
     setFilteredBrands(brand);
@@ -88,17 +74,17 @@ const FilterBrand = ({ setFilteredProductData }) => {
         }}
       />
       <FormGroup className="filter-item-group">
-        {filteredBrands.map((item, key) => (
+        {filteredBrands.map((brand, key) => (
           <FormControlLabel
             key={key}
             control={
               <Checkbox
                 sx={{ color: "var(--ocean)" }}
-                onChange={() => handleFilterBrandChange(item)}
-                checked={selectedBrands.includes(item)}
+                onChange={() => handleBrandSelection(brand)}
+                checked={selectedBrands.includes(brand)}
               />
             }
-            label={item}
+            label={brand}
           />
         ))}
       </FormGroup>
