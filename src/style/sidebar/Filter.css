@@ -1,17 +1,22 @@
 .filter-wrapper {
   min-width: 200px;
-  transition: all 150ms linear;
+}
+.filter-wrapper .filter-container {
   height: -moz-fit-content;
   height: fit-content;
+  transition: all 150ms linear;
   position: sticky;
   top: 20px;
 }
-.filter-wrapper .filter {
+.filter-wrapper .filter-container .filter-button {
+  display: none !important;
+}
+.filter-wrapper .filter-container .filter {
   display: flex;
   flex-direction: column;
   gap: var(--gap2x);
 }
-.filter-wrapper .filter .filter-item {
+.filter-wrapper .filter-container .filter .filter-item {
   background-color: var(--light);
   min-height: 100px;
   width: 100%;
@@ -20,10 +25,49 @@
   box-shadow: var(--shadow);
   font-size: 14px;
 }
-.filter-wrapper .filter .filter-item .filter-item-group {
+.filter-wrapper .filter-container .filter .filter-item .filter-item-group {
   display: flex;
   flex-direction: column;
   max-height: 200px;
   overflow-y: auto;
   flex-wrap: nowrap;
+}
+
+@media (max-width: 768px) {
+  .filter-wrapper {
+    position: relative;
+    min-width: 0px;
+    z-index: 5;
+  }
+  .filter-wrapper .filter-container {
+    top: 50px;
+  }
+  .filter-wrapper .filter-container .filter-button {
+    display: flex !important;
+    position: absolute;
+    top: -40px;
+    left: 20px;
+    width: 140px !important;
+  }
+  .filter-wrapper .filter-container .filter {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 200px;
+  }
+  .filter-wrapper .filter-container .filter.close {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .filter-wrapper .filter-container .filter {
+    width: 260px;
+  }
+}
+@media (max-width: 380px) {
+  .filter-wrapper .filter-container .filter-button {
+    width: 100px !important;
+    height: 50px !important;
+    top: -60px;
+  }
 }/*# sourceMappingURL=Filter.css.map */

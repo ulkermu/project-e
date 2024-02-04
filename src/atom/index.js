@@ -40,3 +40,13 @@ export const basketState = atom({
   key: "basket",
   default: isStoraged ? JSON.parse(localStorage.getItem("basket")) : [],
 });
+
+export const openBasketState = atom({
+  key: "openBasket",
+  default: false,
+});
+
+export const openFilterState = atom({
+  key: "openFilter",
+  default: false,
+});

@@ -7,6 +7,7 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import Basket from "../components/sidebar/basket/Basket";
 import Filter from "../components/sidebar/filter/Filter";
+import SidebarButtons from "../components/sidebar/SidebarButtons";
 
 const Product = () => {
   return (
@@ -18,6 +19,7 @@ const Product = () => {
             <Filter />
           </aside>
           <section className="product">
+            <SidebarButtons />
             <ProductList />
           </section>
           <aside className="basket-wrapper">

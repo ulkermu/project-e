@@ -21,6 +21,17 @@
       justify-content: center;
     }
 
+    .sidebar {
+      display: none;
+      justify-content: space-between;
+      gap: var(--gap);
+
+      .sidebar-button {
+        max-width: 140px;
+        height: auto !important;
+      }
+    }
+
     .product-list {
       display: flex;
       flex-wrap: wrap;
@@ -76,6 +87,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .product-wrapper {
+    .product {
+      .sidebar {
+        display: flex;
+      }
     }
   }
 }

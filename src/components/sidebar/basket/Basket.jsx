@@ -1,11 +1,17 @@
+import { useRecoilValue } from "recoil";
 import BasketList from "./BasketList";
 import BasketPrice from "./BasketPrice";
+import { openBasketState } from "../../../atom";
 
 const Basket = () => {
+  const openBasket = useRecoilValue(openBasketState);
+
   return (
-    <div className="basket">
-      <BasketList />
-      <BasketPrice />
+    <div className="basket-container">
+      <div className={`basket${openBasket ? "" : " close"}`}>
+        <BasketList />
+        <BasketPrice />
+      </div>
     </div>
   );
 };
