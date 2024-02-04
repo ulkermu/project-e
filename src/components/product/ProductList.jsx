@@ -42,6 +42,12 @@ const ProductList = ({ filteredProductData, setFilteredProductData }) => {
     getData();
   }, [getData]);
 
+  useEffect(() => {
+    if (page !== 1 && page > Math.ceil(filteredProductData?.length / pageLimit)) {
+      setPage(Math.ceil(filteredProductData?.length / pageLimit));
+    }
+  }, [page, filteredProductData?.length]);
+
   return loading ? (
     <div className="loading">Loading...</div>
   ) : (

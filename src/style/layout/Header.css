@@ -22,7 +22,7 @@ header .nav-wrapper .nav-container {
 }
 header .nav-wrapper .nav-container nav a {
   font-size: 20px;
-  letter-spacing: 5px;
+  letter-spacing: 4px;
   color: var(--light);
   text-decoration: none;
 }
