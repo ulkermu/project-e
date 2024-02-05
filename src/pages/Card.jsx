@@ -15,7 +15,7 @@ const Card = () => {
           <section className="card">
             <CardItem />
           </section>
-          <aside className="basket-wrapper">
+          <aside className="card-basket-wrapper">
             <Basket />
           </aside>
         </div>

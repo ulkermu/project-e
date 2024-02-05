@@ -37,8 +37,6 @@
   .filter-wrapper {
     position: relative;
     min-width: 0px;
-  }
-  .filter-wrapper .filter-container {
     display: none;
   }
 }/*# sourceMappingURL=Filter.css.map */

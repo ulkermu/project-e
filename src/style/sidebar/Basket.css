@@ -74,12 +74,86 @@
   font-size: 16px;
 }
 
+.card-basket-wrapper {
+  min-width: 200px;
+}
+.card-basket-wrapper .basket-container {
+  height: -moz-fit-content;
+  height: fit-content;
+  transition: all 150ms linear;
+  position: sticky;
+  top: 20px;
+}
+.card-basket-wrapper .basket-container .basket-button {
+  display: none !important;
+}
+.card-basket-wrapper .basket-container .basket {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap2x);
+}
+.card-basket-wrapper .basket-container .basket .basket-item {
+  background-color: var(--light);
+  width: 100%;
+  border-radius: 7px;
+  box-shadow: var(--shadow);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+.card-basket-wrapper .basket-container .basket .basket-item .basket-item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.card-basket-wrapper .basket-container .basket .basket-item .basket-item-list .basket-item-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-basket-wrapper .basket-container .basket .basket-item .basket-item-list .basket-item-list-item .item-detail {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.card-basket-wrapper .basket-container .basket .basket-item .basket-item-list .basket-item-list-item .item-detail .item-detail-name {
+  font-weight: 600;
+}
+.card-basket-wrapper .basket-container .basket .basket-item .basket-item-list .basket-item-list-item .item-detail .item-detail-price {
+  color: var(--ocean);
+  font-weight: 500;
+}
+.card-basket-wrapper .basket-container .basket .basket-item .basket-item-list .empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.card-basket-wrapper .basket-container .basket .basket-item .basket-item-list .empty svg {
+  color: var(--ocean);
+}
+.card-basket-wrapper .basket-container .basket .basket-item .basket-item-list .empty p {
+  font-size: 14px;
+  color: var(--ocean);
+}
+.card-basket-wrapper .basket-container .basket .basket-item.price {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 16px;
+}
+.card-basket-wrapper .basket-container .basket .basket-item.price span {
+  font-weight: 700;
+  color: var(--ocean);
+  font-size: 16px;
+}
+
 @media (max-width: 768px) {
   .basket-wrapper {
     position: relative;
     min-width: 0px;
-  }
-  .basket-wrapper .basket-container {
     display: none;
   }
 }/*# sourceMappingURL=Basket.css.map */
