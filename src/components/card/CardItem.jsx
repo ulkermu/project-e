@@ -12,7 +12,7 @@ const CardItem = () => {
   const card = useRecoilValue(cardState);
   const [basket, setBasket] = useRecoilState(basketState);
 
-  const isExist = basket.find((e) => e.id === card.id);
+  const isExist = basket.find((e) => e.id === card.id) ? true : false;
 
   const handleAddCard = () => {
     setBasket((prevBasket) => {

@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
 import ProductList from "../../../components/product/ProductList";
 import { RecoilRoot } from "recoil";
 import fetchMock from "jest-fetch-mock";
