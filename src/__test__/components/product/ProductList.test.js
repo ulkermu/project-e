@@ -25,11 +25,11 @@ test("loads and displays products", async () => {
   fetchMock.mockResponseOnce(JSON.stringify(productData));
 
   render(
-    <BrowserRouter>
-      <RecoilRoot>
+    <RecoilRoot>
+      <BrowserRouter>
         <ProductList />
-      </RecoilRoot>
-    </BrowserRouter>
+      </BrowserRouter>
+    </RecoilRoot>
   );
 
   const item = await screen.findByText("Bentley Focus");

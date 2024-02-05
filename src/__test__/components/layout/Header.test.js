@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import Header from "../../../components/layout/Header";
 
@@ -7,9 +7,9 @@ describe("Header Component", () => {
   it("renders correctly", () => {
     render(
       <RecoilRoot>
-        <Router>
+        <BrowserRouter>
           <Header />
-        </Router>
+        </BrowserRouter>
       </RecoilRoot>
     );
 
@@ -17,15 +17,13 @@ describe("Header Component", () => {
     expect(screen.getByPlaceholderText("Search")).toBeInTheDocument();
     expect(screen.getByText("Eteration")).toBeInTheDocument();
   });
-  
-
 
   it("handles search functionality", () => {
     render(
       <RecoilRoot>
-        <Router>
+        <BrowserRouter>
           <Header />
-        </Router>
+        </BrowserRouter>
       </RecoilRoot>
     );
 
@@ -39,9 +37,9 @@ describe("Header Component", () => {
   it("toggles mobile search view", () => {
     render(
       <RecoilRoot>
-        <Router>
+        <BrowserRouter>
           <Header />
-        </Router>
+        </BrowserRouter>
       </RecoilRoot>
     );
 

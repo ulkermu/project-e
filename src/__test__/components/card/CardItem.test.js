@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { RecoilRoot } from "recoil";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { basketState, cardState } from "../../../atom";
 import CardItem from "../../../components/card/CardItem";
 
@@ -25,9 +25,9 @@ describe("CardItem Component", () => {
     const useRecoilValueMock = jest.fn().mockReturnValue({});
     render(
       <RecoilRoot initializeState={(snap) => snap.set(cardState, useRecoilValueMock)}>
-        <Router>
+        <BrowserRouter>
           <CardItem />
-        </Router>
+        </BrowserRouter>
       </RecoilRoot>
     );
     // Check for redirection logic (mock useNavigate and verify its call)
@@ -36,9 +36,9 @@ describe("CardItem Component", () => {
   it("should display the correct card information", () => {
     render(
       <RecoilRoot initializeState={(snap) => snap.set(cardState, mockCard)}>
-        <Router>
+        <BrowserRouter>
           <CardItem />
-        </Router>
+        </BrowserRouter>
       </RecoilRoot>
     );
     expect(screen.getByText("Test Product")).toBeInTheDocument();
@@ -50,9 +50,9 @@ describe("CardItem Component", () => {
   it("should add item to basket on button click", () => {
     render(
       <RecoilRoot>
-        <Router>
+        <BrowserRouter>
           <CardItem />
-        </Router>
+        </BrowserRouter>
       </RecoilRoot>
     );
     fireEvent.click(screen.getByText("Add to Basket"));
@@ -64,9 +64,9 @@ describe("CardItem Component", () => {
     const useRecoilStateMock = jest.fn().mockReturnValue([[mockCard], jest.fn()]);
     render(
       <RecoilRoot initializeState={(snap) => snap.set(basketState, useRecoilStateMock)}>
-        <Router>
+        <BrowserRouter>
           <CardItem />
-        </Router>
+        </BrowserRouter>
       </RecoilRoot>
     );
     expect(screen.getByText("Added to Basket")).toBeDisabled();
