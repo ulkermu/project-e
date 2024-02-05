@@ -21,15 +21,6 @@ jest.mock("recoil", () => ({
   useRecoilState: jest.fn(),
 }));
 
-const localStorageMock = {
-  setItem: jest.fn(),
-  getItem: jest.fn(),
-  removeItem: jest.fn(),
-  clear: jest.fn(),
-};
-
-global.localStorage = localStorageMock;
-
 describe("ProductListItem Component", () => {
   const mockNavigate = jest.fn();
   const setBasket = jest.fn();
