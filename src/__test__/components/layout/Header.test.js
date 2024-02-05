@@ -27,11 +27,10 @@ describe("Header Component", () => {
       </RecoilRoot>
     );
 
+    // Check if search results are updated correctly
     const searchInput = screen.getByPlaceholderText("Search");
     fireEvent.change(searchInput, { target: { value: "test" } });
     expect(searchInput.value).toBe("test");
-
-    // Check if search results are updated correctly
   });
 
   it("toggles mobile search view", () => {
@@ -43,10 +42,8 @@ describe("Header Component", () => {
       </RecoilRoot>
     );
 
+    // Check if mobile search view is toggled on and off correctly
     const searchButton = screen.getByText("Search");
     fireEvent.click(searchButton);
-    // Check if mobile search view is toggled on and off correctly
   });
-
-  // Tests for NavLink's correct redirection...
 });

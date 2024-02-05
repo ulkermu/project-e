@@ -62,7 +62,7 @@ const FilterModel = () => {
         value={search}
         onChange={handleSearchChange}
         size="small"
-        label="Search"
+        label="Search Model"
         autoComplete="off"
         InputProps={{
           startAdornment: (
