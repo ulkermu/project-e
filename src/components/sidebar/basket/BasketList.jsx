@@ -57,7 +57,6 @@ const BasketList = () => {
       return prevBasket;
     });
   };
-
   return (
     <div className="basket-item">
       <div className="basket-item-list">
@@ -68,11 +67,11 @@ const BasketList = () => {
               <div className="item-detail-price">${Number(item.price) * Number(item.quantity)}</div>
             </div>
             <div className="basket-item-list-item">
-              <IconButton onClick={() => handleDeleteFromBasket(item)}>
+              <IconButton aria-label="Remove" onClick={() => handleDeleteFromBasket(item)}>
                 <RemoveCircleOutlineOutlinedIcon />
               </IconButton>
               <div>{item.quantity}</div>
-              <IconButton onClick={() => handleAddToBasket(item)}>
+              <IconButton aria-label="Add" onClick={() => handleAddToBasket(item)}>
                 <AddCircleOutlineOutlinedIcon />
               </IconButton>
             </div>

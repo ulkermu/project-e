@@ -1,42 +1,76 @@
-import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { RecoilRoot, atom } from "recoil";
+import { RecoilRoot } from "recoil";
+import { brandState, selectedBrandsState } from "../../../atom";
 import FilterBrand from "../../../components/sidebar/filter/FilterBrand";
-import { BrowserRouter } from "react-router-dom";
 
-// Recoil state'lerini ve atomlarını oluşturun
-const brandState = atom({
-  key: "brandState",
-  default: ["Smart", "Nissan", "Volkswagen"],
-});
+const initialBrands = ["Apple", "Samsung", "Sony"];
+const initialSelectedBrands = ["Samsung"];
 
-const selectedBrandsState = atom({
-  key: "selectedBrandsState",
-  default: [],
-});
-
-test("FilterBrand component filters brands correctly", async () => {
-  // Test verileri
-  const mockBrandData = ["Smart", "Nissan", "Volkswagen"];
-  const mockSelectedBrands = ["Nissan"];
-
-  // Test bileşenini oluşturun
-  render(
-    <RecoilRoot
-      initializeState={(snap) => {
-        snap.set(brandState, mockBrandData);
-        snap.set(selectedBrandsState, mockSelectedBrands);
-      }}
-    >
-      <BrowserRouter>
+describe("FilterBrand Component Tests", () => {
+  it("should render without crashing", () => {
+    render(
+      <RecoilRoot
+        initializeState={({ set }) => {
+          set(brandState, initialBrands);
+          set(selectedBrandsState, initialSelectedBrands);
+        }}
+      >
         <FilterBrand />
-      </BrowserRouter>
-    </RecoilRoot>
-  );
+      </RecoilRoot>
+    );
 
-  // "Search Brand" giriş alanı ve checkboxleri bulun
-  const searchInput = screen.getByLabelText("Search Brand");
+    expect(screen.getByLabelText("Search Brand")).toBeInTheDocument();
+  });
 
-  // Giriş alanına bir değer girin
-  fireEvent.change(searchInput, { target: { value: "Nissan" } });
+  it("should filter brands based on search input", () => {
+    render(
+      <RecoilRoot initializeState={({ set }) => set(brandState, initialBrands)}>
+        <FilterBrand />
+      </RecoilRoot>
+    );
+
+    const searchInput = screen.getByLabelText("Search Brand");
+    fireEvent.change(searchInput, { target: { value: "Apple" } });
+
+    expect(screen.getByText("Apple")).toBeInTheDocument();
+    expect(screen.queryByText("Samsung")).toBeNull();
+  });
+
+  it("should clear the search input when clear button is clicked", () => {
+    render(
+      <RecoilRoot initializeState={({ set }) => set(brandState, initialBrands)}>
+        <FilterBrand />
+      </RecoilRoot>
+    );
+
+    const searchInput = screen.getByLabelText("Search Brand");
+    fireEvent.change(searchInput, { target: { value: "Apple" } });
+
+    const clearButton = screen.getByRole("button");
+    fireEvent.click(clearButton);
+
+    expect(searchInput.value).toBe("");
+  });
+
+  it("should toggle brand selection on checkbox click", () => {
+    render(
+      <RecoilRoot
+        initializeState={({ set }) => {
+          set(brandState, initialBrands);
+          set(selectedBrandsState, initialSelectedBrands);
+        }}
+      >
+        <FilterBrand />
+      </RecoilRoot>
+    );
+
+    const samsungCheckbox = screen.getByLabelText("Samsung");
+    fireEvent.click(samsungCheckbox);
+
+    const appleCheckbox = screen.getByLabelText("Apple");
+    fireEvent.click(appleCheckbox);
+
+    expect(samsungCheckbox.checked).toBe(false);
+    expect(appleCheckbox.checked).toBe(true);
+  });
 });
