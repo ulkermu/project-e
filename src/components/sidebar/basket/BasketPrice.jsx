@@ -11,7 +11,9 @@ const BasketPrice = () => {
 
   return (
     <div className="basket-item price">
-      <div className="price-item">Total Price: <span>${totalPrice}</span></div>
+      <div className="price-item">
+        Total Price: <span>{`$${totalPrice}`}</span>
+      </div>
       <Button className="button">Checkout</Button>
     </div>
   );
