@@ -1,0 +1,89 @@
+.drawer .filter-container {
+  overflow-y: auto;
+}
+.drawer .filter-container .filter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap2x);
+  padding: 10px;
+}
+.drawer .filter-container .filter .filter-item {
+  background-color: var(--light);
+  min-height: 100px;
+  width: 100%;
+  border-radius: 7px;
+  padding: 0 10px;
+  font-size: 14px;
+  border: 1px solid #d7d7d7;
+}
+.drawer .filter-container .filter .filter-item.brand {
+  padding: 20px 10px 10px 10px;
+}
+.drawer .filter-container .filter .filter-item .filter-item-group {
+  display: flex;
+  flex-direction: column;
+  max-height: 200px;
+  overflow-y: auto;
+  flex-wrap: nowrap;
+}
+.drawer .basket-container .basket {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap2x);
+}
+.drawer .basket-container .basket .basket-item {
+  background-color: var(--light);
+  width: 100%;
+  border-radius: 7px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+.drawer .basket-container .basket .basket-item .basket-item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.drawer .basket-container .basket .basket-item .basket-item-list .basket-item-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.drawer .basket-container .basket .basket-item .basket-item-list .basket-item-list-item .item-detail {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.drawer .basket-container .basket .basket-item .basket-item-list .basket-item-list-item .item-detail .item-detail-name {
+  font-weight: 600;
+}
+.drawer .basket-container .basket .basket-item .basket-item-list .basket-item-list-item .item-detail .item-detail-price {
+  color: var(--ocean);
+  font-weight: 500;
+}
+.drawer .basket-container .basket .basket-item .basket-item-list .empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.drawer .basket-container .basket .basket-item .basket-item-list .empty svg {
+  color: var(--ocean);
+}
+.drawer .basket-container .basket .basket-item .basket-item-list .empty p {
+  font-size: 14px;
+  color: var(--ocean);
+}
+.drawer .basket-container .basket .basket-item.price {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 16px;
+}
+.drawer .basket-container .basket .basket-item.price span {
+  font-weight: 700;
+  color: var(--ocean);
+  font-size: 16px;
+}/*# sourceMappingURL=Drawer.css.map */

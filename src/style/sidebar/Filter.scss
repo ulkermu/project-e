@@ -41,51 +41,9 @@
   .filter-wrapper {
     position: relative;
     min-width: 0px;
-    z-index: 5;
 
     .filter-container {
-      top: 50px;
-
-      .filter-button {
-        display: flex !important;
-        position: absolute;
-        top: -40px;
-        left: 20px;
-        width: 140px !important;
-      }
-
-      .filter {
-        position: absolute;
-        left: 0;
-        top: 50px;
-        width: 200px;
-
-        &.close {
-          display: none;
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 500px) {
-  .filter-wrapper {
-    .filter-container {
-      .filter {
-        width: 260px;
-      }
-    }
-  }
-}
-
-@media (max-width: 380px) {
-  .filter-wrapper {
-    .filter-container {
-      .filter-button {
-        width: 100px !important;
-        height: 50px !important;
-        top: -60px;
-      }
+      display: none;
     }
   }
 }

@@ -57,7 +57,7 @@ const FilterModel = () => {
   }, [model]);
 
   return (
-    <div className="filter-item">
+    <div className="filter-item brand">
       <TextField
         value={search}
         onChange={handleSearchChange}

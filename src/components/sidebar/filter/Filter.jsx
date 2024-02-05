@@ -5,7 +5,6 @@ import FilterSort from "./FilterSort";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import {
   filteredProductDataState,
-  openFilterState,
   productDataState,
   selectedBrandsState,
   selectedModelsState,
@@ -25,7 +24,6 @@ const theme = createTheme({
 });
 
 const Filter = () => {
-  const openFilter = useRecoilValue(openFilterState);
   const productData = useRecoilValue(productDataState);
   const selectedBrands = useRecoilValue(selectedBrandsState);
   const selectedModels = useRecoilValue(selectedModelsState);
@@ -54,7 +52,7 @@ const Filter = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="filter-container">
-        <div className={`filter${openFilter ? "" : " close"}`}>
+        <div className="filter">
           <FilterSort />
           <FilterBrand />
           <FilterModel />
