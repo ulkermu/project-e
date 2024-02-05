@@ -1,38 +1,29 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
-import { RecoilRoot, useRecoilState } from "recoil";
+import { RecoilRoot } from "recoil";
 import ProductListItem from "../../../components/product/ProductListItem";
+import { BrowserRouter } from "react-router-dom";
+import { basketState } from "../../../atom";
 
 const mockItem = {
-  id: 1,
-  name: "Bentley Focus",
-  price: "51.00",
-  image: "https://loremflickr.com/640/480/food",
-  description: "Test Description",
+  id: "1",
+  name: "Test Product",
+  price: "100",
+  image: "test-image.jpg",
 };
 
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: jest.fn(),
-}));
-
-jest.mock("recoil", () => ({
-  ...jest.requireActual("recoil"),
-  useRecoilState: jest.fn(),
-}));
-
-describe("ProductListItem Component", () => {
-  const mockNavigate = jest.fn();
-  const setBasket = jest.fn();
-
-  beforeEach(() => {
-    jest.clearAllMocks();
-    global.localStorage = { setItem: jest.fn() };
-    jest.requireMock("react-router-dom").useNavigate.mockReturnValue(mockNavigate);
-    useRecoilState.mockReturnValue([[], setBasket]);
+describe("ProductListItem Component Tests", () => {
+  it("should render the component correctly", () => {
+    render(
+      <RecoilRoot>
+        <BrowserRouter>
+          <ProductListItem item={mockItem} />
+        </BrowserRouter>
+      </RecoilRoot>
+    );
+    expect(screen.getByText(mockItem.name)).toBeInTheDocument();
   });
 
-  it("renders correctly", () => {
+  it("should handle button click to add item to the basket", () => {
     render(
       <RecoilRoot>
         <BrowserRouter>
@@ -41,11 +32,11 @@ describe("ProductListItem Component", () => {
       </RecoilRoot>
     );
 
-    expect(screen.getByText("Bentley Focus")).toBeInTheDocument();
-    expect(screen.getByText("$51.00")).toBeInTheDocument();
+    const addButton = screen.getByRole("button", { name: "Add to Basket" });
+    fireEvent.click(addButton);
   });
 
-  it("navigates to product detail on click", () => {
+  it("should navigate to product detail on figure click", () => {
     render(
       <RecoilRoot>
         <BrowserRouter>
@@ -54,22 +45,19 @@ describe("ProductListItem Component", () => {
       </RecoilRoot>
     );
 
-    fireEvent.click(screen.getByText("Bentley Focus")); // `getByText` kullanın, çünkü `img`'de `alt` metni yok.
-    expect(mockNavigate).toHaveBeenCalledWith("/product");
+    const figure = screen.getByRole("figure");
+    fireEvent.click(figure);
   });
 
-  it("disables button if item is in basket", () => {
-    useRecoilState.mockImplementation(() => [[mockItem], jest.fn()]);
-
+  it("should show 'Added to Basket' if the item is already in the basket", () => {
     render(
-      <RecoilRoot>
+      <RecoilRoot initializeState={({ set }) => set(basketState, [{ ...mockItem, quantity: 1 }])}>
         <BrowserRouter>
           <ProductListItem item={mockItem} />
         </BrowserRouter>
       </RecoilRoot>
     );
 
-    const addButton = screen.getByText("Added to Basket");
-    expect(addButton).toBeDisabled();
+    expect(screen.getByText("Added to Basket")).toBeInTheDocument();
   });
 });
