@@ -23,6 +23,7 @@ This project makes use of the following technologies and tools:
 - **Material-UI**: A popular React UI framework.
 - **Recoil**: A state management library for React.
 - **react-router-dom**: A standard library for routing in React.
+- **jest**: A delightful JavaScript Testing Framework with a focus on simplicity.
 
 ## Installation
 
@@ -68,6 +69,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Murat ÜLKER - [muratulker93@gmail.com]
+Murat ÜLKER - muratulker93@gmail.com
 
-Project Link: (Project-e)[https://project-e-rho.vercel.app]
+Project Link: https://project-e-rho.vercel.app
