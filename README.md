@@ -1,70 +1,81 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Eteration E-Commerce Website
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+Welcome to the repository of our Eteration E-Commerce website. This platform provides a seamless shopping experience for a variety of products. With an intuitive interface, customers can filter products, add them to their basket, and perform searches across the catalog.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Filtering Options**: Users can filter products based on various criteria such as 'Old to New', 'New to Old', 'Price High to Low', and 'Price Low to High'.
+- **Search Functionality**: A general search feature that allows users to search any text visible on the product cards.
+- **Persistent Shopping Basket**: Utilizing `localStorage`, the site remembers the user's basket items even after closing the browser.
+- **Responsive UI**: Built with Material UI, the interface adapts to various screen sizes for an optimal browsing experience.
+- **State Management**: `Recoil` is used for global state management across components.
+- **Routing**: `react-router-dom` is used for navigating between different pages of the website.
+- **Testing**: Comprehensive test suites are written for each component under the `__test__` directory to ensure reliability and maintainability.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies & Tools
 
-### `npm test`
+This project makes use of the following technologies and tools:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React**: A JavaScript library for building user interfaces.
+- **Material-UI**: A popular React UI framework.
+- **Recoil**: A state management library for React.
+- **react-router-dom**: A standard library for routing in React.
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository to your local machine.
+   ```sh
+   git clone [repository-link]
+   ```
+2. Navigate to the project directory.
+   ```sh
+   cd e-commerce-site
+   ```
+3. Install the required dependencies.
+   ```sh
+   npm install
+   ```
+4. Run the application.
+   ```sh
+   npm start
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+After launching the site, you can:
 
-### `npm run eject`
+- Use the filters on the left side to sort products.
+- Add products to your basket, which will update the total price and items in the basket section.
+- Use the search bar to look for products by any keyword on the product cards.
+- Revisit the site and find your previous basket intact, thanks to `localStorage`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Testing
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To run the tests, execute the following command:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```sh
+npm test
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Each component has an associated test file in the `__test__` directory that can be used to verify its functionality.
 
-## Learn More
+## Contributions
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 
-### Code Splitting
+Don't forget to give the project a star! Thanks again!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## License
 
-### Analyzing the Bundle Size
+Distributed under the MIT License. See `LICENSE` for more information.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contact
 
-### Making a Progressive Web App
+Murat ÜLKER - [muratulker93@gmail.com]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Project Link: [[repository-link](https://project-e-rho.vercel.app)https://project-e-rho.vercel.app]
