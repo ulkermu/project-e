@@ -70,4 +70,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Murat ÜLKER - [muratulker93@gmail.com]
 
-Project Link: [[repository-link](https://project-e-rho.vercel.app)https://project-e-rho.vercel.app]
+Project Link: (Project-e)[https://project-e-rho.vercel.app]
