@@ -3,7 +3,7 @@
 
 ## Overview
 
-Welcome to the repository of our Eteration E-Commerce website. This platform provides a seamless shopping experience for a variety of products. With an intuitive interface, customers can filter products, add them to their basket, and perform searches across the catalog.
+Welcome to the repository of our E-Commerce website. This platform provides a seamless shopping experience for a variety of products. With an intuitive interface, customers can filter products, add them to their basket, and perform searches across the catalog.
 
 ## Features
 
