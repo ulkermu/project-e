@@ -1,5 +1,5 @@
 
-# Eteration E-Commerce Website
+# E-Commerce Website
 
 ## Overview
 
@@ -28,11 +28,11 @@ This project makes use of the following technologies and tools:
 
 1. Clone the repository to your local machine.
    ```sh
-   git clone [repository-link]
+   git clone https://github.com/ulkermu/project-e.git
    ```
 2. Navigate to the project directory.
    ```sh
-   cd e-commerce-site
+   cd project-e
    ```
 3. Install the required dependencies.
    ```sh
